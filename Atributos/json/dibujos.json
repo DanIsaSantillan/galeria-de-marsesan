@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1786315294668,
+    "titulo": "Mi Perfil",
+    "categoria": "digital",
+    "fecha": "2021-01-02",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Mi Perfil.jpeg",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Mi icónico perfil que uso en casi todas mis redes sociales (excepto Discord que uso el perfil que me hizo mi mejor amigo)",
+    "lore_url": ""
+  },
+  {
+    "id": 1,
+    "titulo": "Alba Comisión",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Alba Comision.jpeg",
+    "fecha": "2026-04-18",
+    "categoria": "digital",
+    "comision": true,
+    "es_concepto": false,
+    "descripcion": "Una comisión que me encargo una amiga XD.",
+    "lore_url": ""
+  },
+  {
+    "id": 2,
+    "titulo": "Angel Harvey",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Angel Harvey.jpeg",
+    "fecha": "2025-09-21",
+    "categoria": "digital",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Au de Harvey como el ángel del amor, ya que el original decía que toda su vida deseó que alguien lo amara de verdad, Harver Angel of Love es el encargado de que las almas gemelas se encuentren, aunque él aun no encuentra a su alma gemela.",
+    "lore_url": ""
+  },
+  {
+    "id": 3,
+    "titulo": "Harvey Harvinton",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Harvey Harvinton.jpeg",
+    "fecha": "2025-09-14",
+    "categoria": "digital",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Retrato digital de personaje.",
+    "lore_url": ""
+  },
+  {
+    "id": 4,
+    "titulo": "Bellyana Freyja Darling",
+    "imagen": "Atributos/Dibujos/DibujoMano/Bellyana Freyja Darling.jpeg",
+    "fecha": "2026-07-25",
+    "categoria": "tradicional",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Dibujo tradicional a mano en papel.",
+    "lore_url": ""
+  },
+  {
+    "id": 5,
+    "titulo": "Hela Darling",
+    "imagen": "Atributos/Dibujos/DibujoMano/Hela Darling.jpeg",
+    "fecha": "2026-07-26",
+    "categoria": "tradicional",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Arte físico tradicional.",
+    "lore_url": ""
+  },
+  {
+    "id": 6,
+    "titulo": "Wally Valha Darling",
+    "imagen": "Atributos/Dibujos/DibujoMano/Wally Valha Darling.jpeg",
+    "fecha": "2026-07-27",
+    "categoria": "tradicional",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Estudio tradicional de personaje.",
+    "lore_url": ""
+  },
+  {
+    "id": 7,
+    "titulo": "Furry Murcielago Boceto",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Murcielago Furry Boceto.jpeg",
+    "fecha": "2026-04-28",
+    "categoria": "digital",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Proceso de dibujo Furry experimental.",
+    "lore_url": ""
+  },
+  {
+    "id": 8,
+    "titulo": "Prueba de Dibujo",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Prueba de Dibujo.jpeg",
+    "fecha": "2026-05-23",
+    "categoria": "digital",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Experimento de dibujo de cabello.",
+    "lore_url": ""
+  }
+]

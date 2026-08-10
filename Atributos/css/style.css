@@ -1,0 +1,86 @@
+/* Estilos personalizados para la Galería de Arte MarseSan */
+
+/* Tipografía Artística (Caveat) */
+.cursiva {
+  font-family: 'Caveat', cursive;
+  font-size: 1.85rem;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-cursiva {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+}
+
+.font-artistic {
+  font-family: 'Caveat', cursive;
+}
+
+/* Efecto Hover en Tarjetas de la Galería */
+.card-hover {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Estilos de Fondos Temáticos (Galaxia) */
+.galaxy {
+  background-image: url('../Fondos/GalaxiaBlue.jpeg');
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-galaxy {
+  background-image: url('../Fondos/Galaxia.jpeg');
+  background-size: cover;
+  background-position: left center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 100vh;
+}
+
+.dark-galaxy {
+  background-color: #050508;
+  background-image: url('../Fondos/GalaxiaDark.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Foto de Perfil */
+.perfil {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  transition: border-color 0.3s ease;
+}
+
+/* --- PROTECCIÓN DE ARTE Y CAPA ANTI-DESCARGA --- */
+.unselectable, 
+.protected-image {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Capa transparente sobre la imagen en el modal */
+.image-protection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: transparent;
+}
+
+.sidebar {
+  min-height: calc(100vh - 70px);
+}

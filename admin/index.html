@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador | Galería MarseSan</title>
+  <link rel="icon" href="../Atributos/Dibujos/DibujoDigital/Perfil.jpeg" type="image/jpeg">
+  <!-- Bootstrap & CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../Atributos/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-galaxy text-white">
+
+  <!-- Navegación superior estilo Galaxia -->
+  <nav class="navbar navbar-expand-lg border-bottom galaxy p-3">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <a href="../index.html" class="btn btn-outline-light btn-sm font-artistic">
+          <i class="bi bi-arrow-left me-1"></i> Volver a Galería Pública
+        </a>
+        <h4 class="font-artistic mb-0">⚙️ Panel Privado de Gestión de Ilustraciones</h4>
+      </div>
+      
+      <div class="d-flex align-items-center gap-2">
+        <!-- Configuración de Token de Acceso Directo -->
+        <button class="btn btn-outline-warning btn-sm font-artistic" id="btnConfigToken" title="Configurar Acceso Directo a GitHub">
+          <i class="bi bi-key-fill me-1"></i> Token
+        </button>
+        <!-- Botón para abrir el formulario de Nuevo Dibujo -->
+        <button class="btn btn-success font-artistic px-3" data-bs-toggle="modal" data-bs-target="#uploadModal">
+          <i class="bi bi-plus-circle me-1"></i> Nuevo Dibujo
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido en Grid (Vista previa en vivo) -->
+  <main class="container py-4">
+    <h5 class="font-artistic mb-3">Tus Ilustraciones Registradas (Haz clic en una para editar/eliminar)</h5>
+    <div class="row g-4" id="adminGalleryGrid">
+      <!-- Se inyectarán tus dibujos igual que en el index -->
+    </div>
+  </main>
+
+  <!-- Modal para Agregar / Editar Ilustración -->
+  <div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-secondary">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title font-artistic" id="modalFormTitle">Subir Nueva Ilustración</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="adminDrawForm">
+            <div class="mb-3">
+              <label class="form-label small">Título de la Obra</label>
+              <input type="text" id="drawTitle" class="form-control bg-body-tertiary text-white border-secondary" required>
+            </div>
+            
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small">Categoría</label>
+                <select id="drawCategory" class="form-select bg-body-tertiary text-white border-secondary">
+                  <option value="digital">Digital</option>
+                  <option value="tradicional">Tradicional</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label small">Fecha</label>
+                <input type="date" id="drawDate" class="form-control bg-body-tertiary text-white border-secondary" required>
+              </div>
+            </div>
+
+            <!-- Campo de Imagen -->
+            <div class="mb-3">
+              <label class="form-label small">Imagen de la Ilustración</label>
+              
+              <div class="input-group input-group-sm">
+                <label for="drawFileInput" class="input-group-text bg-secondary text-white border-secondary" style="cursor: pointer;" title="Seleccionar imagen">
+                  <i class="bi bi-folder2-open"></i>
+                </label>
+                  
+                <input type="file" id="drawFileInput" class="d-none" accept="image/*">
+                <span class="input-group-text bg-dark text-white-50 border-secondary" id="folderPrefix">Atributos/Dibujos/DibujoDigital/</span>
+                <input type="text" id="drawFileName" class="form-control bg-body-tertiary text-white border-secondary" placeholder="Selecciona una imagen..." readonly required>
+              </div>
+
+              <!-- Vista Previa de la Imagen Seleccionada -->
+              <div class="text-center mt-2 d-none" id="previewContainer">
+                <img id="imagePreview" src="" class="img-thumbnail bg-black border-secondary" style="max-height: 140px; object-fit: contain;">
+              </div>
+            </div>
+
+            <div class="d-flex gap-4 mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="drawIsCommission">
+                <label class="form-check-label small" for="drawIsCommission">Comisión</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="drawIsConcept">
+                <label class="form-check-label small" for="drawIsConcept">Boceto / Concepto</label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small">Descripción</label>
+              <textarea id="drawDescription" class="form-control bg-body-tertiary text-white border-secondary" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small">URL del Lore (Opcional)</label>
+              <input type="url" id="drawLoreUrl" class="form-control bg-body-tertiary text-white border-secondary" placeholder="https://wattpad.com/...">
+            </div>
+
+            <button type="submit" id="btnSaveDraw" class="btn btn-primary w-100 font-artistic">
+              <i class="bi bi-cloud-upload me-1"></i> Guardar y Publicar en GitHub
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

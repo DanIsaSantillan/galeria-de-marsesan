@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de MarseSan</title>
+  <!--Foto de Perfil como Icono-->
+  <link rel="icon" href="Atributos/Dibujos/DibujoDigital/Perfil.jpeg" type="image/jpeg">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Estilos Personalizados -->
+  <link rel="stylesheet" href="Atributos/css/style.css">
+  <!-- Google Fonts: Importar fuente cursiva artística (Caveat) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navegación superior -->
+  <nav class="navbar navbar-expand-lg border-bottom galaxy">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 text-white font-artistic" href="#">
+        <img src="Atributos/Dibujos/DibujoDigital/Perfil.jpeg"
+             id="profileTrigger"
+             alt="Perfil de Marse"
+             class="perfil rounded-circle border border-1 border-white-50"
+             style="width: 32px; height: 32px; object-fit: cover; cursor: pointer;">
+        <span class="fw-bold cursiva">Galería de MarseSan</span>
+      </a>
+      <span id="galleryTitle" class="navbar-text small text-body-secondary d-none d-sm-inline">
+        Mi Galería y Referencias de Personajes
+      </span>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="container-fluid p-0">
+    <div class="row g-0">
+
+      <!-- COLUMNA IZQUIERDA (SIDEBAR ESTÁTICO EN SCROLL) -->
+      <aside class="col-12 col-md-3 col-lg-2 sidebar-galaxy border-end border-secondary-subtle p-4 sidebar-cursiva">
+        <!-- CORREGIDO: Se agregó la etiqueta <div> que faltaba aquí -->
+        <div class="sticky-top d-flex flex-column justify-content-between" style="top: 20px; z-index: 10; min-height: calc(100vh - 100px);">
+          
+          <div>
+            <!-- BUSCADOR EN TIEMPO REAL -->
+            <h6 class="text-uppercase fw-bold text-white small mb-2">
+              <i class="bi bi-search me-1"></i> Búsqueda
+            </h6>
+            <div class="input-group mb-4">
+              <input type="text" id="searchInput" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Buscar personaje...">
+            </div>
+
+            <!-- CATEGORÍAS Y FILTROS -->
+            <h6 class="text-uppercase fw-bold text-white small mb-3">
+              <i class="bi bi-funnel me-1"></i> Categorías
+            </h6>
+            
+            <div class="d-flex flex-column gap-2 mb-4">
+              <button class="btn btn-sm btn-outline-light active btn-filter text-start w-100" data-filter="all">
+                <i class="bi bi-grid-fill me-2"></i>Todos los Dibujos
+              </button>
+              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="digital">
+                <i class="bi bi-laptop me-2"></i>Digital
+              </button>
+              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="tradicional">
+                <i class="bi bi-journal-check me-2"></i>Tradicional
+              </button>
+              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="comision">
+                <i class="bi bi-star-fill me-2"></i>Comisiones
+              </button>
+              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="concepto">
+                <i class="bi bi-lightbulb me-2"></i>Conceptos / Bocetos
+              </button>
+            </div>
+          </div>
+
+          <!-- BOTÓN DE COMISIONES (Oculto por defecto) -->
+          <div id="commissionSidebarBtn" class="pt-3 border-top border-secondary mt-auto d-none">
+            <button class="btn btn-outline-light w-100 font-artistic d-flex align-items-center justify-content-center gap-2 shadow-sm text-white fw-bold"
+                    data-bs-toggle="modal"
+                    data-bs-target="#commissionModal">
+              <i class="bi bi-palette-fill"></i>
+              <span>Encargar Comisión</span>
+            </button>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- COLUMNA DERECHA (GRID DE GALERÍA) -->
+      <section class="col-12 col-md-9 col-lg-10 p-4 dark-galaxy">
+        <div class="row g-4" id="galleryGrid">
+          <!-- Las tarjetas se inyectan dinámicamente con JavaScript -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Modal Visor de Dibujo (Lightbox Protegido) -->
+  <div class="modal fade" id="artModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-body-tertiary border-secondary">
+        <div class="modal-header border-bottom-0">
+          <h1 class="modal-title fs-5 font-artistic" id="modalTitle">Título de la Obra</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body p-3">
+          <div class="row g-4">
+            
+            <!-- Imagen en Alta Res con Capa Protectora -->
+            <div class="col-12 col-lg-8 text-center bg-black rounded p-2 d-flex align-items-center justify-content-center position-relative unselectable">
+              <img id="modalImage" src="" class="img-fluid rounded protected-image" style="max-height: 75vh; object-fit: contain;" alt="Ilustración">
+              <!-- Capa invisible para bloquear clic derecho y descarga directa -->
+              <div class="image-protection-overlay"></div>
+            </div>
+  
+            <!-- Detalles Técnicos, Descripción y Comentarios -->
+            <div class="col-12 col-lg-4 d-flex flex-column" style="max-height: 75vh;">
+              
+              <!-- Detalles y Descripción -->
+              <div class="mb-2">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <span id="modalCategory" class="badge bg-primary">Categoría</span>
+                  <span id="modalDate" class="text-body-secondary small ms-2">Fecha</span>
+                </div>
+                
+                <h6 class="fw-bold"><i class="bi bi-journal-text me-1"></i> Descripción:</h6>
+                <p id="modalDescription" class="small text-body-secondary bg-body p-3 rounded border mb-2" style="max-height: 120px; overflow-y: auto;">
+                  Detalles de la ilustración.
+                </p>
+  
+                <!-- Botón opcional para ver Lore en Wattpad u otro sitio -->
+                <a id="modalLoreBtn" href="#" target="_blank" class="btn btn-sm btn-outline-info w-100 font-artistic d-none">
+                  <i class="bi bi-book me-1"></i> Ver Lore de la Historia
+                </a>
+              </div>
+  
+              <!-- Nueva Sección de Comentarios (Ocupa el espacio restante) -->
+              <div class="d-flex flex-column flex-grow-1 overflow-hidden mt-2">
+                <h6 class="fw-bold"><i class="bi bi-chat-dots me-1"></i> Comentarios:</h6>
+                
+                <!-- Lista de comentarios con Scroll -->
+                <div id="commentsList" class="flex-grow-1 p-2 bg-body rounded border mb-2 overflow-y-auto" style="min-height: 120px;">
+                  <p class="text-body-secondary small text-center my-3" id="noCommentsText">Sé el primero en comentar esta ilustración ✨</p>
+                </div>
+  
+                <!-- Formulario -->
+                <form id="commentForm" class="d-flex flex-column gap-2 mt-auto">
+                  <input type="text" id="commentAuthor" class="form-control form-control-sm bg-body text-body" placeholder="Tu usuario de Wattpad" required>
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="commentText" class="form-control bg-body text-body" placeholder="Escribe un comentario..." required>
+                    <button type="submit" class="btn btn-primary font-artistic">
+                      <i class="bi bi-send-fill"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+  
+              <!-- Control de descarga exclusivo para Modo Admin -->
+              <div id="adminControls" class="pt-3 border-top mt-3 d-none">
+                <a id="modalDownload" href="#" download class="btn btn-warning btn-sm w-100 font-artistic">
+                  <i class="bi bi-download me-1"></i> Descargar Imagen Original (Admin)
+                </a>
+              </div>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Contacto por Discord para Comisiones -->
+  <div class="modal fade" id="commissionModal" tabindex="-1" aria-labelledby="commissionModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-body-tertiary border-secondary text-white">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title font-artistic" id="commissionModalTitle">✨ Solicitar Comisión de Arte</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <i class="bi bi-palette fs-1 text-white mb-2"></i>
+          <h6 class="font-artistic text-white fs-5 mb-2">¡Hablemos de tu idea!</h6>
+          
+          <p class="small text-white-50 mb-3">
+            Actualmente gestiono las comisiones de manera directa por <strong>Discord</strong> para acordar referencias, detalles y precios cómodamente.
+          </p>
+
+          <!-- Caja con tu nombre de usuario (Estilo Oscuro con Bordes Blancos) -->
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text bg-black text-white border-white">
+              <i class="bi bi-discord"></i>
+            </span>
+            <input type="text" id="discordUserTag" class="form-control bg-black text-white border-white text-center font-monospace" value="marselinesantillan" readonly>
+            <button class="btn btn-outline-light" type="button" id="btnCopyDiscord" title="Copiar Usuario">
+              <i class="bi bi-copy"></i>
+            </button>
+          </div>
+
+          <div class="d-grid gap-2">
+            <a href="https://discord.com/users/804399010760228956" target="_blank" class="btn btn-outline-light font-artistic fw-bold">
+              <i class="bi bi-chat-dots-fill me-1"></i> Abrir Chat / Enviar Solicitud en Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: Bootstrap JS y Lógica de Interacción -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="Atributos/js/main.js"></script>
+</body>
+</html>
