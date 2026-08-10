@@ -41,7 +41,6 @@
 
       <!-- COLUMNA IZQUIERDA (SIDEBAR ESTÁTICO EN SCROLL) -->
       <aside class="col-12 col-md-3 col-lg-2 sidebar-galaxy border-end border-secondary-subtle p-4 sidebar-cursiva">
-        <!-- CORREGIDO: Se agregó la etiqueta <div> que faltaba aquí -->
         <div class="sticky-top d-flex flex-column justify-content-between" style="top: 20px; z-index: 10; min-height: calc(100vh - 100px);">
           
           <div>
@@ -139,7 +138,7 @@
                 </a>
               </div>
   
-              <!-- Nueva Sección de Comentarios (Ocupa el espacio restante) -->
+              <!-- Nueva Sección de Comentarios -->
               <div class="d-flex flex-column flex-grow-1 overflow-hidden mt-2">
                 <h6 class="fw-bold"><i class="bi bi-chat-dots me-1"></i> Comentarios:</h6>
                 
@@ -191,7 +190,7 @@
             Actualmente gestiono las comisiones de manera directa por <strong>Discord</strong> para acordar referencias, detalles y precios cómodamente.
           </p>
 
-          <!-- Caja con tu nombre de usuario (Estilo Oscuro con Bordes Blancos) -->
+          <!-- Caja con tu nombre de usuario -->
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text bg-black text-white border-white">
               <i class="bi bi-discord"></i>
@@ -212,8 +211,39 @@
     </div>
   </div>
 
-  <!-- Scripts: Bootstrap JS y Lógica de Interacción -->
+  <!-- Scripts: Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Inicialización de Firebase SDK con tus credenciales exactas -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { 
+      getFirestore, 
+      collection, 
+      addDoc, 
+      query, 
+      where, 
+      onSnapshot, 
+      serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBrIcFw7ixTo7_dsSouek-bVeg6BlB0jHw",
+      authDomain: "galeria-de-marsesan.firebaseapp.com",
+      projectId: "galeria-de-marsesan",
+      storageBucket: "galeria-de-marsesan.firebasestorage.app",
+      messagingSenderId: "34057008394",
+      appId: "1:34057008394:web:5a82519481ba6609a3f6f3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.dbFirestore = db;
+    window.fsMethods = { collection, addDoc, query, where, onSnapshot, serverTimestamp };
+  </script>
+
+  <!-- Lógica de Interacción Principal -->
   <script src="Atributos/js/main.js"></script>
 </body>
 </html>
