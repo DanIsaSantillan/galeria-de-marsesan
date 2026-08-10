@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalFormTitle = document.getElementById('modalFormTitle');
   const btnConfigToken = document.getElementById('btnConfigToken');
 
-  // CONFIGURACIÓN DE TU REPOSITORIO (⚠️ Ajusta estos dos datos con los tuyos)
+  // CONFIGURACIÓN DE TU REPOSITORIO
   const GITHUB_USER = "DanIsaSantillan"; 
   const GITHUB_REPO = "galeria-de-marsesan";
 
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       } catch (error) {
         console.error("Error al publicar:", error);
-        alert("⚠️ Hubo un error al guardar en GitHub. Revisa la consola o verifica tu Token.");
+        alert(`⚠️ Hubo un error al guardar en GitHub: ${error.message}`);
       } finally {
         btnSave.disabled = false;
         btnSave.innerHTML = '<i class="bi bi-cloud-upload me-1"></i> Guardar y Publicar en GitHub';
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- FUNCIONES API GITHUB (Permiten guardar de verdad en tu repo) ---
+  // --- FUNCIONES API GITHUB ---
 
   async function subirArchivoAGitHub(path, base64Content, commitMessage) {
     const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`;
@@ -300,7 +300,10 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify(body)
     });
 
-    if (!response.ok) throw new Error("Error al subir archivo a GitHub");
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Error al subir la imagen.");
+    }
   }
 
   async function guardarCambiosEnGitHub(commitMessage) {
@@ -309,13 +312,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Obtener SHA actual del json
     const resCheck = await fetch(url, { headers: { Authorization: `token ${ghToken}` } });
-    if (!resCheck.ok) throw new Error("No se pudo obtener el SHA de dibujos.json");
+    if (!resCheck.ok) {
+      const errorData = await resCheck.json();
+      throw new Error(errorData.message || "No se pudo obtener el SHA de dibujos.json");
+    }
     const dataCheck = await resCheck.json();
 
-    // Convertir el JSON local a Base64 con formato utf-8
+    // Convertir el JSON local a Base64 con formato utf-8 seguro para textos largos y caracteres especiales
     const jsonString = JSON.stringify(misDibujos, null, 2);
-    const utf8Bytes = new TextEncoder().encode(jsonString);
-    const base64Content = btoa(String.fromCharCode(...utf8Bytes));
+    const bytes = new TextEncoder().encode(jsonString);
+    let binario = '';
+    for (let i = 0; i < bytes.byteLength; i++) {
+      binario += String.fromCharCode(bytes[i]);
+    }
+    const base64Content = btoa(binario);
 
     const response = await fetch(url, {
       method: 'PUT',
@@ -331,6 +341,9 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     });
 
-    if (!response.ok) throw new Error("Error al actualizar dibujos.json en GitHub");
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Error al actualizar dibujos.json");
+    }
   }
 });
