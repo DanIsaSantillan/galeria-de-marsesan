@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnConfigToken = document.getElementById('btnConfigToken');
 
   // CONFIGURACIÓN DE TU REPOSITORIO (⚠️ Ajusta estos dos datos con los tuyos)
-  const GITHUB_USER = "TU_USUARIO_GITHUB"; 
-  const GITHUB_REPO = "NOMBRE_DE_TU_REPOSITORIO";
+  const GITHUB_USER = "DanIsaSantillan"; 
+  const GITHUB_REPO = "galeria-de-marsesan";
 
   let misDibujos = [];
   let idEdicionActual = null;
