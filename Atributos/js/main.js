@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Variable de estado para el dibujo abierto actualmente en el modal
   let dibujoIdActual = null;
 
+  // Variable para cancelar la escucha previa de comentarios en Firebase al cambiar de dibujo
+  let desuscripcionComentarios = null;
+
   // --- CONTROL DE MODO ADMINISTRADOR (Vía foto de perfil) ---
   let esModoAdmin = false;
   let contadorClicsPerfil = 0;
@@ -67,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 1. Cargar datos desde el archivo JSON
-  fetch('Atributos/json/dibujos.json')
+  // 1. Cargar datos desde el archivo JSON con parámetro anti-caché
+  fetch('Atributos/json/dibujos.json?v=' + Date.now())
     .then(response => {
       if (!response.ok) throw new Error('Error al cargar dibujos.json');
       return response.json();
@@ -259,8 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Cargar comentarios correspondientes
-      cargarComentarios(dibujoIdActual);
+      // Cargar comentarios correspondientes con Firebase
+      cargarComentariosFirebase(dibujoIdActual);
     });
   }
 
@@ -279,39 +282,81 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- 7. SISTEMA DE COMENTARIOS (LocalStorage / Preparado para Firebase) ---
-  function cargarComentarios(dibujoId) {
+  // --- 7. SISTEMA DE COMENTARIOS CON FIREBASE FIRESTORE ---
+
+  function cargarComentariosFirebase(dibujoId) {
     const commentsList = document.getElementById('commentsList');
     if (!commentsList) return;
 
-    const comentariosGuardados = JSON.parse(localStorage.getItem(`comentarios_${dibujoId}`)) || [];
+    // Si había una escucha activa de otro modal, la cancelamos primero
+    if (desuscripcionComentarios) {
+      desuscripcionComentarios();
+    }
 
-    if (comentariosGuardados.length === 0) {
-      commentsList.innerHTML = '<p class="text-body-secondary small text-center my-3" id="noCommentsText">Sé el primero en comentar esta ilustración ✨</p>';
+    if (!window.dbFirestore || !window.fsMethods) {
+      commentsList.innerHTML = '<p class="text-white-50 text-center my-3">Conectando con el servidor de comentarios...</p>';
       return;
     }
 
-    commentsList.innerHTML = '';
-    comentariosGuardados.forEach(c => {
-      const item = document.createElement('div');
-      item.className = 'p-2 mb-2 bg-body-tertiary rounded border border-secondary text-break';
-      item.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <strong class="font-artistic text-info small">${escapeHTML(c.autor)}</strong>
-          <span class="text-body-secondary" style="font-size: 0.7rem;">${c.fecha}</span>
-        </div>
-        <p class="mb-0 small text-body">${escapeHTML(c.texto)}</p>
-      `;
-      commentsList.appendChild(item);
-    });
+    const { collection, query, where, onSnapshot } = window.fsMethods;
 
-    commentsList.scrollTop = commentsList.scrollHeight;
+    // Consulta simple por dibujoId (evita requerir índices compuestos en Firebase)
+    const q = query(
+      collection(window.dbFirestore, 'comentarios'),
+      where('dibujoId', '==', String(dibujoId))
+    );
+
+    // Escucha en tiempo real de Firestore
+    desuscripcionComentarios = onSnapshot(q, (snapshot) => {
+      commentsList.innerHTML = '';
+
+      if (snapshot.empty) {
+        commentsList.innerHTML = '<p class="text-white-50 small text-center my-3" id="noCommentsText">Sé el primero en comentar esta ilustración ✨</p>';
+        return;
+      }
+
+      // Extraer y ordenar comentarios por fecha localmente
+      const comentarios = [];
+      snapshot.forEach((doc) => {
+        comentarios.push(doc.data());
+      });
+
+      comentarios.sort((a, b) => {
+        const fechaA = a.fecha && a.fecha.toDate ? a.fecha.toDate().getTime() : 0;
+        const fechaB = b.fecha && b.fecha.toDate ? b.fecha.toDate().getTime() : 0;
+        return fechaA - fechaB;
+      });
+
+      // Renderizar la lista
+      comentarios.forEach((c) => {
+        let fechaTexto = 'Hace un momento';
+        if (c.fecha && c.fecha.toDate) {
+          fechaTexto = c.fecha.toDate().toLocaleDateString();
+        }
+
+        const item = document.createElement('div');
+        item.className = 'p-2 mb-2 bg-dark rounded border border-secondary text-break';
+        item.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <strong class="font-artistic text-info small">${escapeHTML(c.autor || 'Anónimo')}</strong>
+            <span class="text-white-50" style="font-size: 0.7rem;">${fechaTexto}</span>
+          </div>
+          <p class="mb-0 small text-white">${escapeHTML(c.texto || '')}</p>
+        `;
+        commentsList.appendChild(item);
+      });
+
+      commentsList.scrollTop = commentsList.scrollHeight;
+    }, (error) => {
+      console.error("Error al cargar comentarios de Firestore:", error);
+      commentsList.innerHTML = '<p class="text-danger small text-center my-3">Error al cargar comentarios.</p>';
+    });
   }
 
-  // Enviar nuevo comentario
+  // Enviar nuevo comentario a Firebase
   const commentForm = document.getElementById('commentForm');
   if (commentForm) {
-    commentForm.addEventListener('submit', (e) => {
+    commentForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!dibujoIdActual) return;
 
@@ -320,18 +365,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!autorInput || !textoInput) return;
 
-      const nuevoComentario = {
-        autor: autorInput.value.trim(),
-        texto: textoInput.value.trim(),
-        fecha: new Date().toLocaleDateString()
-      };
+      const autor = autorInput.value.trim() || 'Anónimo';
+      const texto = textoInput.value.trim();
 
-      const comentariosGuardados = JSON.parse(localStorage.getItem(`comentarios_${dibujoIdActual}`)) || [];
-      comentariosGuardados.push(nuevoComentario);
-      localStorage.setItem(`comentarios_${dibujoIdActual}`, JSON.stringify(comentariosGuardados));
+      if (!texto) return;
 
-      cargarComentarios(dibujoIdActual);
-      textoInput.value = '';
+      if (!window.dbFirestore || !window.fsMethods) {
+        alert("⚠️ Firebase aún no ha terminado de cargar. Por favor reintenta en un momento.");
+        return;
+      }
+
+      const { collection, addDoc, serverTimestamp } = window.fsMethods;
+
+      try {
+        await addDoc(collection(window.dbFirestore, 'comentarios'), {
+          dibujoId: String(dibujoIdActual),
+          autor: autor,
+          texto: texto,
+          fecha: serverTimestamp()
+        });
+
+        textoInput.value = ''; // Limpia únicamente el campo del texto
+      } catch (err) {
+        console.error("Error al enviar comentario a Firebase:", err);
+        alert("⚠️ No se pudo enviar tu comentario.");
+      }
     });
   }
 
