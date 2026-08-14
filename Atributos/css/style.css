@@ -40,7 +40,6 @@
   background-size: cover;
   background-position: left center;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  min-height: 100vh;
 }
 
 .dark-galaxy {
@@ -81,6 +80,47 @@
   background: transparent;
 }
 
-.sidebar {
-  min-height: calc(100vh - 70px);
+
+/* --- AJUSTES RESPONSIVE (MÓVIL VS ESCRITORIO) --- */
+
+/* Solo para pantallas grandes (Laptops y Computadoras de escritorio) */
+@media (min-width: 768px) {
+  .sidebar-galaxy,
+  .sidebar {
+    min-height: calc(100vh - 70px);
+  }
+
+  .sidebar-content-container {
+    top: 20px;
+    z-index: 10;
+    min-height: calc(100vh - 100px);
+  }
+}
+
+/* Solo para celulares y dispositivos pequeños */
+@media (max-width: 767.98px) {
+  .sidebar-galaxy,
+  .sidebar {
+    min-height: auto !important;
+  }
+
+  .sidebar-content-container {
+    min-height: auto !important;
+  }
+
+  /* Hace que las categorías sean una barra deslizante horizontal */
+  .filter-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+  }
+
+  .filter-scroll-container::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .filter-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+  }
 }
