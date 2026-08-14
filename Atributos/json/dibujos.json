@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786740200610,
+    "titulo": "Kyoko Darling",
+    "categoria": "tradicional",
+    "fecha": "2024-10-15",
+    "imagen": "Atributos/Dibujos/DibujoMano/Kyoko primer dibujo.jpeg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "La hija adoptiva de Wally Valha Darling, en un inicio no tenia en mente que Wally tuviera hijos, pero una vez soñé que este era abrazado por una panda que lo llamaba papá y no pude retirarlo de mi cabeza así que surgió Kyoko.",
+    "lore_url": ""
+  },
+  {
     "id": 1786739965572,
     "titulo": "Julie manipulando a Wally",
     "categoria": "tradicional",
