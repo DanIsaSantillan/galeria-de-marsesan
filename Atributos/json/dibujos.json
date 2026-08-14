@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786738537376,
+    "titulo": "Bellyana y Wally",
+    "categoria": "tradicional",
+    "fecha": "2023-06-03",
+    "imagen": "Atributos/Dibujos/DibujoMano/Bellyana y su hijo.jpeg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Bellyana y Wally cuando se heredó el martillo de la abuela en el funeral.",
+    "lore_url": ""
+  },
+  {
     "id": 1786335934767,
     "titulo": "Azazel \"Ash\" Phantomdeath",
     "categoria": "tradicional",
