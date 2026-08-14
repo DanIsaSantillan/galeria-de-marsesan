@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786742290661,
+    "titulo": "Moreida Phantomdeath",
+    "categoria": "tradicional",
+    "fecha": "2023-05-11",
+    "imagen": "Atributos/Dibujos/DibujoMano/Moreida Phantomdeath.jpeg",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Personaje de mi libro Lobos de las Sombras",
+    "lore_url": ""
+  },
+  {
     "id": 1786742175446,
     "titulo": "Mommy Tubbie",
     "categoria": "digital",
