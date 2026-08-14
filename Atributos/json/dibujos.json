@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786742175446,
+    "titulo": "Mommy Tubbie",
+    "categoria": "digital",
+    "fecha": "2023-09-20",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Mommy Tubbie.jpeg",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Monstruo Infectado del libro Slendytubbie Life or Death, una infectada cuyo instinto maternal el virus no pudo erradicar y ahora secuestra bebés e infantes usando su vientre mutilado que ahora es una bolsa como la de un canguro para cargar a los infantes y llevarlos a su territorio.",
+    "lore_url": ""
+  },
+  {
     "id": 1786741637019,
     "titulo": "Lucy \"Lilith\" Phantomdeath",
     "categoria": "tradicional",
