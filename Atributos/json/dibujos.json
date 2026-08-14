@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786740787088,
+    "titulo": "Kyoko Skadi Darling",
+    "categoria": "tradicional",
+    "fecha": "2024-10-15",
+    "imagen": "Atributos/Dibujos/DibujoMano/Kyoko Skadi Darling.jpeg",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Kyoko \"Skadi\" Darling, la hija de 16 años de Wally con 2,60 metros de altura, se nombró a sí misma como Skadi por una diosa nórdica siguiendo la tradición Darling de tener un nombre referente al panteón nórdico, adora a su padre y los piercings que tiene en la oreja están hechos de los restos de un brazalete que Wally le hizo, pero se le rompió y Kyoko no quiso que se fuera a la basura.",
+    "lore_url": ""
+  },
+  {
     "id": 1786740200610,
     "titulo": "Kyoko Darling",
     "categoria": "tradicional",
