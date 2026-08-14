@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786743063904,
+    "titulo": "Reynark Phantomdeath",
+    "categoria": "tradicional",
+    "fecha": "2023-05-11",
+    "imagen": "Atributos/Dibujos/DibujoMano/Reynark Phantomdeath.jpeg",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Personaje de mi libro Lobos de las Sombras.",
+    "lore_url": ""
+  },
+  {
     "id": 1786742842981,
     "titulo": "Psycho Amy Rose",
     "categoria": "digital",
