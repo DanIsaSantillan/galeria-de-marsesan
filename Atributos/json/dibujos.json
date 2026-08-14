@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786744061189,
+    "titulo": "Valkyrie Home",
+    "categoria": "tradicional",
+    "fecha": "2023-05-31",
+    "imagen": "Atributos/Dibujos/DibujoMano/Valkyrie Home.jpeg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Concepto de Home en el Au de Welcome Home, Valkyrie. Aun me estoy debatiendo de si es un espíritu creado para servir al Clan Darling o es un demonio que fue esclavizado por la primera Darling y ahora está maldecido a servir a toda la familia Darling por la eternidad sobre todo servir y obedecer al jefe del Clan, actualmente Wally, pero si es seguro decir que es una entidad que no tiene cuerpo físico más allá de la estructura del condominio Darling que usa como una especie de cuerpo por lo que sus ojos se manifiestan en las ventanas y espejos.",
+    "lore_url": ""
+  },
+  {
     "id": 1786743552893,
     "titulo": "Valkyrie Wally y la Valquiria Castigadora",
     "categoria": "tradicional",
