@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786739463324,
+    "titulo": "Julie Celosa",
+    "categoria": "tradicional",
+    "fecha": "2023-07-01",
+    "imagen": "Atributos/Dibujos/DibujoMano/Julie celosa y agresiva.jpeg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Un concepto sobre la reacción habitual de Valkyrie Julie al sentir celos de que alguien sea muy cercano a Wally, pues está enamorada de él, pero lo ataca a él en el proceso.",
+    "lore_url": ""
+  },
+  {
     "id": 1786739147181,
     "titulo": "Concepto de Wally y un Lobo",
     "categoria": "tradicional",
