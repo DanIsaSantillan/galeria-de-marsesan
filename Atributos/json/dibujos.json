@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786745272983,
+    "titulo": "Valkyrie Wally y Valkyrie Sally",
+    "categoria": "tradicional",
+    "fecha": "2023-07-01",
+    "imagen": "Atributos/Dibujos/DibujoMano/Valkyrie Wally y Valkyrie Sally.jpeg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Concepto de Sally y Wally interactuando durante la adolescencia de Wally y esté intentando enseñarle a bailar a Sally pues eso fue lo que llamó la atención a Sally en una fiesta del pueblo.",
+    "lore_url": ""
+  },
+  {
     "id": 1786744874464,
     "titulo": "Valkyrie Wally",
     "categoria": "tradicional",
