@@ -39,46 +39,46 @@
   <main class="container-fluid p-0">
     <div class="row g-0">
 
-      <!-- COLUMNA IZQUIERDA (SIDEBAR ESTÁTICO EN SCROLL) -->
-      <aside class="col-12 col-md-3 col-lg-2 sidebar-galaxy border-end border-secondary-subtle p-4 sidebar-cursiva">
-        <div class="sticky-top d-flex flex-column justify-content-between" style="top: 20px; z-index: 10; min-height: calc(100vh - 100px);">
+      <!-- COLUMNA IZQUIERDA (SIDEBAR ADAPTATIVO EN CELULARES) -->
+      <aside class="col-12 col-md-3 col-lg-2 sidebar-galaxy border-end border-secondary-subtle p-3 p-md-4 sidebar-cursiva">
+        <div class="sticky-top d-flex flex-column justify-content-between sidebar-content-container">
           
           <div>
             <!-- BUSCADOR EN TIEMPO REAL -->
             <h6 class="text-uppercase fw-bold text-white small mb-2">
               <i class="bi bi-search me-1"></i> Búsqueda
             </h6>
-            <div class="input-group mb-4">
+            <div class="input-group mb-3">
               <input type="text" id="searchInput" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Buscar personaje...">
             </div>
 
             <!-- CATEGORÍAS Y FILTROS -->
-            <h6 class="text-uppercase fw-bold text-white small mb-3">
+            <h6 class="text-uppercase fw-bold text-white small mb-2">
               <i class="bi bi-funnel me-1"></i> Categorías
             </h6>
             
-            <div class="d-flex flex-column gap-2 mb-4">
-              <button class="btn btn-sm btn-outline-light active btn-filter text-start w-100" data-filter="all">
-                <i class="bi bi-grid-fill me-2"></i>Todos los Dibujos
+            <div class="d-flex flex-md-column gap-2 mb-3 filter-scroll-container">
+              <button class="btn btn-sm btn-outline-light active btn-filter text-start text-nowrap" data-filter="all">
+                <i class="bi bi-grid-fill me-1"></i>Todos los Dibujos
               </button>
-              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="digital">
-                <i class="bi bi-laptop me-2"></i>Digital
+              <button class="btn btn-sm btn-outline-light btn-filter text-start text-nowrap" data-filter="digital">
+                <i class="bi bi-laptop me-1"></i>Digital
               </button>
-              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="tradicional">
-                <i class="bi bi-journal-check me-2"></i>Tradicional
+              <button class="btn btn-sm btn-outline-light btn-filter text-start text-nowrap" data-filter="tradicional">
+                <i class="bi bi-journal-check me-1"></i>Tradicional
               </button>
-              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="comision">
-                <i class="bi bi-star-fill me-2"></i>Comisiones
+              <button class="btn btn-sm btn-outline-light btn-filter text-start text-nowrap" data-filter="comision">
+                <i class="bi bi-star-fill me-1"></i>Comisiones
               </button>
-              <button class="btn btn-sm btn-outline-light btn-filter text-start w-100" data-filter="concepto">
-                <i class="bi bi-lightbulb me-2"></i>Conceptos / Bocetos
+              <button class="btn btn-sm btn-outline-light btn-filter text-start text-nowrap" data-filter="concepto">
+                <i class="bi bi-lightbulb me-1"></i>Conceptos / Bocetos
               </button>
             </div>
           </div>
 
           <!-- BOTÓN DE COMISIONES (Oculto por defecto) -->
-          <div id="commissionSidebarBtn" class="pt-3 border-top border-secondary mt-auto d-none">
-            <button class="btn btn-outline-light w-100 font-artistic d-flex align-items-center justify-content-center gap-2 shadow-sm text-white fw-bold"
+          <div id="commissionSidebarBtn" class="pt-2 border-top border-secondary mt-auto d-none">
+            <button class="btn btn-outline-light w-100 font-artistic d-flex align-items-center justify-content-center gap-2 shadow-sm text-white fw-bold btn-sm"
                     data-bs-toggle="modal"
                     data-bs-target="#commissionModal">
               <i class="bi bi-palette-fill"></i>
@@ -116,7 +116,7 @@
               <!-- Capa invisible para bloquear clic derecho y descarga directa -->
               <div class="image-protection-overlay"></div>
             </div>
-  
+
             <!-- Detalles Técnicos, Descripción y Comentarios -->
             <div class="col-12 col-lg-4 d-flex flex-column" style="max-height: 75vh;">
               
@@ -131,13 +131,13 @@
                 <p id="modalDescription" class="small text-body-secondary bg-body p-3 rounded border mb-2" style="max-height: 120px; overflow-y: auto;">
                   Detalles de la ilustración.
                 </p>
-  
+
                 <!-- Botón opcional para ver Lore en Wattpad u otro sitio -->
                 <a id="modalLoreBtn" href="#" target="_blank" class="btn btn-sm btn-outline-info w-100 font-artistic d-none">
                   <i class="bi bi-book me-1"></i> Ver Lore de la Historia
                 </a>
               </div>
-  
+
               <!-- Nueva Sección de Comentarios -->
               <div class="d-flex flex-column flex-grow-1 overflow-hidden mt-2">
                 <h6 class="fw-bold"><i class="bi bi-chat-dots me-1"></i> Comentarios:</h6>
@@ -146,7 +146,7 @@
                 <div id="commentsList" class="flex-grow-1 p-2 bg-body rounded border mb-2 overflow-y-auto" style="min-height: 120px;">
                   <p class="text-body-secondary small text-center my-3" id="noCommentsText">Sé el primero en comentar esta ilustración ✨</p>
                 </div>
-  
+
                 <!-- Formulario -->
                 <form id="commentForm" class="d-flex flex-column gap-2 mt-auto">
                   <input type="text" id="commentAuthor" class="form-control form-control-sm bg-body text-body" placeholder="Tu usuario de Wattpad" required>
@@ -158,16 +158,16 @@
                   </div>
                 </form>
               </div>
-  
+
               <!-- Control de descarga exclusivo para Modo Admin -->
               <div id="adminControls" class="pt-3 border-top mt-3 d-none">
                 <a id="modalDownload" href="#" download class="btn btn-warning btn-sm w-100 font-artistic">
                   <i class="bi bi-download me-1"></i> Descargar Imagen Original (Admin)
                 </a>
               </div>
-  
+
             </div>
-  
+
           </div>
         </div>
       </div>
