@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786744398633,
+    "titulo": "Valkyrie Sally",
+    "categoria": "tradicional",
+    "fecha": "2024-05-27",
+    "imagen": "Atributos/Dibujos/DibujoMano/Valkyrie Sally.jpeg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Arte conceptual de Valkyrie Sally, a diferencia de Valkyrie Wally, Valkyrie Julie, Valkyrie Franny y Valkyrie Poppy quienes son portadores de valquirias y usan los instrumentos mágicos y los poderes divinos a voluntad, Valkyrie Sally ES UNA VALQUIRIA, es la hermana menor de las valquirias que ahora están vinculadas con Wally, Julie, Franny y Poppy, no tiene portador ni forma física de arma o instrumento, ni función establecido, ha perdido la memoria y solo es una chica rubia tonta a la que tienen que cuidar para que no le pase nada.",
+    "lore_url": ""
+  },
+  {
     "id": 1786744061189,
     "titulo": "Valkyrie Home",
     "categoria": "tradicional",
