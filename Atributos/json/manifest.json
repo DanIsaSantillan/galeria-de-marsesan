@@ -1,0 +1,22 @@
+{
+  "name": "Galería de MarseSan",
+  "short_name": "Galería Marse",
+  "start_url": "../../index.html",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "icons": [
+    {
+      "src": "../Dibujos/DibujoDigital/Perfil.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../Dibujos/DibujoDigital/Perfil.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
