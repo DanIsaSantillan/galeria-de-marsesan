@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786757382585,
+    "titulo": "Practica de dibujo digital",
+    "categoria": "digital",
+    "fecha": "2023-01-06",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Dibujo Digital.jfif",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "No tengo mucho que decir, solo que es una práctica de dibujo con ideas sacadas de Pinterest y que una amiga me ayudó a elegir las piezas.",
+    "lore_url": ""
+  },
+  {
     "id": 1786757220834,
     "titulo": "Brain Tubbie",
     "categoria": "digital",
