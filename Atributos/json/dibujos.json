@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786758735425,
+    "titulo": "Infección Prolongada",
+    "categoria": "tradicional",
+    "fecha": "2025-05-17",
+    "imagen": "Atributos/Dibujos/DibujoMano/Infección Prolongada.jfif",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Julie al negarse a que le retiren las plantas parasitas y con su presencia va infectando a los demás vecinos las flores parasitas van evolucionando y generando nuevas partes del cuerpo como ojos y bocas mientras que al mismo tiempo van tomando la voluntad y cuerpo de Julie usándola como una maceta andante.",
+    "lore_url": ""
+  },
+  {
     "id": 1786758149357,
     "titulo": "Glamrock Freddy cosplay",
     "categoria": "tradicional",
