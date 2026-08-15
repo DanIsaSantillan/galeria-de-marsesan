@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786759039727,
+    "titulo": "Jelly Tubbie",
+    "categoria": "tradicional",
+    "fecha": "2023-01-01",
+    "imagen": "Atributos/Dibujos/DibujoMano/Jellysh Tubbie.jfif",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Pa quienes ya saben quién es y su historia, me gustó el diseño tal y como está así que no lo cambiare, tal vez haga un mejor dibujito pero el diseño es el mismo",
+    "lore_url": ""
+  },
+  {
     "id": 1786758735425,
     "titulo": "Infección Prolongada",
     "categoria": "tradicional",
