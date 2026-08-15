@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786759926795,
+    "titulo": "Rose Tubbie",
+    "categoria": "tradicional",
+    "fecha": "2023-01-01",
+    "imagen": "Atributos/Dibujos/DibujoMano/Rose Tubbie Alpha.jfif",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Una de mis infectadas favoritas por concepto, pero un poco compleja para dibujar.",
+    "lore_url": ""
+  },
+  {
     "id": 1786759779799,
     "titulo": "Octo Tubbie",
     "categoria": "digital",
