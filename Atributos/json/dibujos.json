@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786759779799,
+    "titulo": "Octo Tubbie",
+    "categoria": "digital",
+    "fecha": "2023-09-29",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Octo Tubbie.jfif",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "El New Born que fue idea salida de un sueño que tuve hace años y se me quedó muy clara en la mente y me impulsó a reiniciar la historia.",
+    "lore_url": ""
+  },
+  {
     "id": 1786759654566,
     "titulo": "Martillo del Castigo",
     "categoria": "tradicional",
