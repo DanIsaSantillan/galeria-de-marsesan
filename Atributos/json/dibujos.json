@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786764390538,
+    "titulo": "Sally Flower Infection",
+    "categoria": "tradicional",
+    "fecha": "2025-05-17",
+    "imagen": "Atributos/Dibujos/DibujoMano/Sally Flower Infection.jfif",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Una de las infecciones más violentas en el vecindario seguida de cerca por Poppy y Wally.",
+    "lore_url": ""
+  },
+  {
     "id": 1786760115949,
     "titulo": "Rose Tubbie Beta",
     "categoria": "digital",
