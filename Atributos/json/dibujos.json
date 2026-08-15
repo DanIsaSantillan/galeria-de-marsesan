@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786759184892,
+    "titulo": "Julie Joyful",
+    "categoria": "digital",
+    "fecha": "2023-04-28",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Julie joyful.jfif",
+    "comision": false,
+    "es_concepto": false,
+    "descripcion": "Un Fanart que hice de Julie usando mi estilo de dibujo de siempre antes de definir como la dibujaría para su versión Valkyrie y su versión Infectada.",
+    "lore_url": ""
+  },
+  {
     "id": 1786759039727,
     "titulo": "Jelly Tubbie",
     "categoria": "tradicional",
