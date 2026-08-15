@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786759654566,
+    "titulo": "Martillo del Castigo",
+    "categoria": "tradicional",
+    "fecha": "2023-05-31",
+    "imagen": "Atributos/Dibujos/DibujoMano/Martillo del Castigo.jpg",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Arte conceptual del característico martillo de Valkyrie Wally y sus ancestros",
+    "lore_url": ""
+  },
+  {
     "id": 1786759465384,
     "titulo": "Julie Joyful Vestido de Fuego",
     "categoria": "digital",
