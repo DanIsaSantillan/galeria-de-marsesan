@@ -1,5 +1,16 @@
 [
   {
+    "id": 1786757220834,
+    "titulo": "Brain Tubbie",
+    "categoria": "digital",
+    "fecha": "2023-01-13",
+    "imagen": "Atributos/Dibujos/DibujoDigital/Brain Tubbie.jfif",
+    "comision": false,
+    "es_concepto": true,
+    "descripcion": "Sinceramente al poco tiempo dejó de convencerme y estoy pensando en hacer un rediseño, pero aún no se me ocurre algo realmente chingón y convincente para el concepto.",
+    "lore_url": ""
+  },
+  {
     "id": 1786756972978,
     "titulo": "Annie Tubbie",
     "categoria": "tradicional",
