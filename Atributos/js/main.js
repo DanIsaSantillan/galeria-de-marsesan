@@ -265,6 +265,24 @@ document.addEventListener('DOMContentLoaded', () => {
       // Cargar comentarios correspondientes con Firebase
       cargarComentariosFirebase(dibujoIdActual);
     });
+
+    // --- MANEJO DEL BOTÓN DE RETROCESO DEL TELÉFONO PARA EL MODAL ---
+    artModal.addEventListener('show.bs.modal', () => {
+      window.history.pushState({ modalOpen: true }, '');
+    });
+
+    window.addEventListener('popstate', () => {
+      const modalInstance = bootstrap.Modal.getInstance(artModal);
+      if (modalInstance && artModal.classList.contains('show')) {
+        modalInstance.hide();
+      }
+    });
+
+    artModal.addEventListener('hidden.bs.modal', () => {
+      if (window.history.state && window.history.state.modalOpen) {
+        window.history.back();
+      }
+    });
   }
 
   // 6. Protección de Arte (Prevenir clic derecho y arrastrar imágenes)
